@@ -91,23 +91,13 @@ cd union_shop
 
 Replace `YOUR-USERNAME` with your actual GitHub username.
 
-### Step 3: Install Dependencies
+### Install Dependencies
 
-Navigate to the project directory and install the required Flutter packages:
-
-#### On Windows
+Your editor should automatically prompt you to install the required dependencies when you open the project. If not, open the integrated terminal (open the Command Palette with `Ctrl+Shift+P` or `Cmd+Shift+P` and type "Terminal: Create New Terminal") and run the following command:
 
 ```bash
 flutter pub get
 ```
-
-#### On macOS
-
-```bash
-flutter pub get
-```
-
-This command downloads all the dependencies specified in the `pubspec.yaml` file.
 
 ### Step 4: Run the Application
 
