@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/product_page.dart';
 import 'package:union_shop/about_page.dart';
+import 'package:union_shop/upsu_page.dart';
+import 'package:union_shop/shop_page.dart';
+import 'package:union_shop/print_shack_page.dart';
+import 'package:union_shop/sale_page.dart';
   
 void main() {
   runApp(const UnionShopApp());
@@ -22,6 +26,10 @@ class UnionShopApp extends StatelessWidget {
       routes: {
         '/product': (context) => const ProductPage(),
         '/about': (context) => const AboutPage(),
+        '/upsu': (context) => const UpsuPage(),
+        '/shop': (context) => const ShopPage(),
+        '/print': (context) => const PrintShackPage(),
+        '/sale': (context) => const SalePage(),
       },
     );
   }
@@ -44,6 +52,33 @@ class HomeScreen extends StatelessWidget {
 
   void placeholderCallbackForButtons() {
     // This is the event handler for buttons that don't work yet
+  }
+
+  Widget _navTextButton(BuildContext context, String label, VoidCallback onPressed) {
+    return TextButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all(
+          const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        ),
+        foregroundColor:
+            MaterialStateProperty.all(Colors.grey[800]),
+        textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+          (states) {
+            final hovered = states.contains(MaterialState.hovered);
+            return TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              decoration: hovered
+                  ? TextDecoration.underline
+                  : TextDecoration.none,
+              decorationThickness: hovered ? 1.4 : 0,
+            );
+          },
+        ),
+      ),
+      child: Text(label),
+    );
   }
 
   @override
@@ -96,32 +131,24 @@ class HomeScreen extends StatelessWidget {
                               },
                             ),
                           ),
-                          // Centered About text in the white bar (styled like AboutPage)
+                          // Centered nav buttons
                           Expanded(
                             child: Center(
-                              child: TextButton(
-                                onPressed: () => navigateToAbout(context),
-                                style: ButtonStyle(
-                                  padding: WidgetStateProperty.all(
-                                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                                  ),
-                                  foregroundColor:
-                                      WidgetStateProperty.all(Colors.grey[800]),
-                                  textStyle: WidgetStateProperty.resolveWith(
-                                    (states) {
-                                      final hovered = states.contains(WidgetState.hovered);
-                                      return TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600,
-                                        decoration: hovered
-                                            ? TextDecoration.underline
-                                            : TextDecoration.none,
-                                        decorationThickness: hovered ? 1.4 : 0,
-                                      );
-                                    },
-                                  ),
-                                ),
-                                child: const Text('About'),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  _navTextButton(context, 'Home', () => navigateToHome(context)),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'UPSU.net', () => Navigator.pushNamed(context, '/upsu')),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'About', () => navigateToAbout(context)),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'Shop', () => Navigator.pushNamed(context, '/shop')),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'The Print Shack', () => Navigator.pushNamed(context, '/print')),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'SALE!', () => Navigator.pushNamed(context, '/sale')),
+                                ],
                               ),
                             ),
                           ),
@@ -274,7 +301,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const Text(
-                      'PORTSMOUTH CITY COLLECTIO',
+                      'PORTSMOUTH CITY COLLECTION',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,

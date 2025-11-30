@@ -14,6 +14,30 @@ class AboutPage extends StatelessWidget {
 
   void placeholderCallbackForButtons() {}
 
+  Widget _navTextButton(BuildContext context, String label, VoidCallback onPressed) {
+    return TextButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all<EdgeInsets>(
+          const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+        ),
+        foregroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF333333)),
+        textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+            (Set<MaterialState> states) {
+          final hovered = states.contains(MaterialState.hovered);
+          return TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            decoration: hovered ? TextDecoration.underline : TextDecoration.none,
+            decorationThickness: hovered ? 1.5 : 0,
+          );
+        }),
+      ),
+      child: Text(label),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,32 +86,21 @@ class AboutPage extends StatelessWidget {
                           ),
                           Expanded(
                             child: Center(
-                              child: TextButton(
-                                onPressed: () => navigateToAbout(context),
-                                style: ButtonStyle(
-                                  padding: WidgetStateProperty.all<EdgeInsets>(
-                                    const EdgeInsets.symmetric(
-                                        horizontal: 8, vertical: 6),
-                                  ),
-                                  foregroundColor:
-                                      WidgetStateProperty.all<Color>(
-                                          const Color(0xFF333333)),
-                                  textStyle: WidgetStateProperty
-                                      .resolveWith<TextStyle?>(
-                                          (Set<WidgetState> states) {
-                                    final hovered =
-                                        states.contains(WidgetState.hovered);
-                                    return TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      decoration: hovered
-                                          ? TextDecoration.underline
-                                          : TextDecoration.none,
-                                      decorationThickness: hovered ? 1.5 : 0,
-                                    );
-                                  }),
-                                ),
-                                child: const Text('About'),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  _navTextButton(context, 'Home', () => navigateToHome(context)),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'UPSU.net', () => Navigator.pushNamed(context, '/upsu')),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'About', () => navigateToAbout(context)),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'Shop', () => Navigator.pushNamed(context, '/shop')),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'The Print Shack', () => Navigator.pushNamed(context, '/print')),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'SALE!', () => Navigator.pushNamed(context, '/sale')),
+                                ],
                               ),
                             ),
                           ),
@@ -157,6 +170,12 @@ class AboutPage extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            // thin separator between header and page content
+            const Divider(
+              height: 1,
+              thickness: 0.5,
+              color: Color(0xFFE0E0E0),
             ),
 
             // About content: block centered on page, text left-aligned inside block

@@ -7,8 +7,53 @@ class ProductPage extends StatelessWidget {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 
+  void navigateToAbout(BuildContext context) {
+    if (ModalRoute.of(context)?.settings.name == '/about') return;
+    Navigator.pushNamed(context, '/about');
+  }
+
+  void navigateToUpsu(BuildContext context) {
+    Navigator.pushNamed(context, '/upsu');
+  }
+
+  void navigateToShop(BuildContext context) {
+    Navigator.pushNamed(context, '/shop');
+  }
+
+  void navigateToPrint(BuildContext context) {
+    Navigator.pushNamed(context, '/print');
+  }
+
+  void navigateToSale(BuildContext context) {
+    Navigator.pushNamed(context, '/sale');
+  }
+
   void placeholderCallbackForButtons() {
     // This is the event handler for buttons that don't work yet
+  }
+
+  Widget _navTextButton(BuildContext context, String label, VoidCallback onPressed) {
+    return TextButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all<EdgeInsets>(
+          const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+        ),
+        foregroundColor:
+            MaterialStateProperty.all<Color>(const Color(0xFF333333)),
+        textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+            (Set<MaterialState> states) {
+          final hovered = states.contains(MaterialState.hovered);
+          return TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            decoration: hovered ? TextDecoration.underline : TextDecoration.none,
+            decorationThickness: hovered ? 1.5 : 0,
+          );
+        }),
+      ),
+      child: Text(label),
+    );
   }
 
   @override
@@ -34,7 +79,7 @@ class ProductPage extends StatelessWidget {
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ),
-                  // Main header
+                  // Main header (logo, centered nav buttons, action icons)
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -61,7 +106,27 @@ class ProductPage extends StatelessWidget {
                               },
                             ),
                           ),
-                          const Spacer(),
+                          // Centered nav buttons (Home, UPSU.net, About, Shop, The Print Shack, SALE!)
+                          Expanded(
+                            child: Center(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  _navTextButton(context, 'Home', () => navigateToHome(context)),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'UPSU.net', () => navigateToUpsu(context)),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'About', () => navigateToAbout(context)),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'Shop', () => navigateToShop(context)),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'The Print Shack', () => navigateToPrint(context)),
+                                  const SizedBox(width: 12),
+                                  _navTextButton(context, 'SALE!', () => navigateToSale(context)),
+                                ],
+                              ),
+                            ),
+                          ),
                           ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 600),
                             child: Row(
@@ -129,6 +194,51 @@ class ProductPage extends StatelessWidget {
                 ],
               ),
             ),
+            // thin separator between header and page content
+            const Divider(
+              height: 1,
+              thickness: 0.5,
+              color: Color(0xFFE0E0E0),
+            ),
+
+            // Hero Section
+            Container(
+              height: 400,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
+                color: Colors.grey[200],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
+                child: Image.network(
+                  'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: Colors.grey[300],
+                      child: const Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.image_not_supported,
+                              size: 64,
+                              color: Colors.grey,
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              'Image unavailable',
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
 
             // Product details
             Container(
@@ -137,47 +247,6 @@ class ProductPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Product image
-                  Container(
-                    height: 300,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.grey[200],
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          return Container(
-                            color: Colors.grey[300],
-                            child: const Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.image_not_supported,
-                                    size: 64,
-                                    color: Colors.grey,
-                                  ),
-                                  SizedBox(height: 8),
-                                  Text(
-                                    'Image unavailable',
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 24),
-
                   // Product name
                   const Text(
                     'Placeholder Product Name',
