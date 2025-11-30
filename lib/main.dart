@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/product_page.dart';
-
+import 'package:union_shop/about_page.dart';
+  
 void main() {
   runApp(const UnionShopApp());
 }
@@ -21,16 +22,23 @@ class UnionShopApp extends StatelessWidget {
       initialRoute: '/',
       // When navigating to '/product', build and return the ProductPage
       // In your browser, try this link: http://localhost:49856/#/product
-      routes: {'/product': (context) => const ProductPage()},
+      routes: {
+        '/product': (context) => const ProductPage(),
+        '/about': (context) => const AboutPage(),
+      },
     );
   }
 }
-
+  
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+  }
+
+  void navigateToAbout(BuildContext context) {
+    Navigator.pushNamed(context, '/about');
   }
 
   void navigateToProduct(BuildContext context) {
@@ -91,7 +99,26 @@ class HomeScreen extends StatelessWidget {
                               },
                             ),
                           ),
-                          const Spacer(),
+                          // Centered About text in the white bar (no icon)
+                          Expanded(
+                            child: Center(
+                              child: TextButton(
+                                onPressed: () => navigateToAbout(context),
+                                style: TextButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 8),
+                                  foregroundColor: Colors.grey,
+                                ),
+                                child: const Text('About',
+                                    style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                           ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 600),
                             child: Row(
@@ -159,7 +186,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-
+  
             // Hero Section
             SizedBox(
               height: 400,
@@ -179,7 +206,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.black.withValues(alpha: 0.7),
+                          color: Colors.black.withOpacity(0.7),
                         ),
                       ),
                     ),
@@ -232,7 +259,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-
+  
             // Products Section
             Container(
               color: Colors.white,
@@ -287,7 +314,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-
+  
             // Footer
             Container(
               width: double.infinity,
