@@ -18,10 +18,7 @@ class UnionShopApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF4d2963)),
       ),
       home: const HomeScreen(),
-      // By default, the app starts at the '/' route, which is the HomeScreen
       initialRoute: '/',
-      // When navigating to '/product', build and return the ProductPage
-      // In your browser, try this link: http://localhost:49856/#/product
       routes: {
         '/product': (context) => const ProductPage(),
         '/about': (context) => const AboutPage(),
@@ -99,23 +96,32 @@ class HomeScreen extends StatelessWidget {
                               },
                             ),
                           ),
-                          // Centered About text in the white bar (no icon)
+                          // Centered About text in the white bar (styled like AboutPage)
                           Expanded(
                             child: Center(
                               child: TextButton(
                                 onPressed: () => navigateToAbout(context),
-                                style: TextButton.styleFrom(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 8),
-                                  foregroundColor: Colors.grey,
-                                ),
-                                child: const Text('About',
-                                    style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
+                                style: ButtonStyle(
+                                  padding: WidgetStateProperty.all(
+                                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                  ),
+                                  foregroundColor:
+                                      WidgetStateProperty.all(Colors.grey[800]),
+                                  textStyle: WidgetStateProperty.resolveWith(
+                                    (states) {
+                                      final hovered = states.contains(WidgetState.hovered);
+                                      return TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                        decoration: hovered
+                                            ? TextDecoration.underline
+                                            : TextDecoration.none,
+                                        decorationThickness: hovered ? 1.4 : 0,
+                                      );
+                                    },
                                   ),
                                 ),
+                                child: const Text('About'),
                               ),
                             ),
                           ),
