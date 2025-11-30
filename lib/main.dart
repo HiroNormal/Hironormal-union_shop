@@ -172,7 +172,7 @@ class HomeScreen extends StatelessWidget {
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: NetworkImage(
-                            'https://shop.upsu.net/cdn/shop/files/PortsmouthCityPostcard2_1024x1024@2x.jpg?v=1752232561',
+                            'https://shop.upsu.net/cdn/shop/files/Signature_T-Shirt_Indigo_Blue_2_1024x1024@2x.jpg?v=1758290534',
                           ),
                           fit: BoxFit.cover,
                         ),
@@ -241,7 +241,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const Text(
-                      'PORTSMOUTH CITY COLLECTION',
+                      'PORTSMOUTH CITY COLLECTIO',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
