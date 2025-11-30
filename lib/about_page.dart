@@ -65,18 +65,18 @@ class AboutPage extends StatelessWidget {
                               child: TextButton(
                                 onPressed: () => navigateToAbout(context),
                                 style: ButtonStyle(
-                                  padding: MaterialStateProperty.all<EdgeInsets>(
+                                  padding: WidgetStateProperty.all<EdgeInsets>(
                                     const EdgeInsets.symmetric(
                                         horizontal: 8, vertical: 6),
                                   ),
                                   foregroundColor:
-                                      MaterialStateProperty.all<Color>(
+                                      WidgetStateProperty.all<Color>(
                                           const Color(0xFF333333)),
-                                  textStyle: MaterialStateProperty
+                                  textStyle: WidgetStateProperty
                                       .resolveWith<TextStyle?>(
-                                          (Set<MaterialState> states) {
+                                          (Set<WidgetState> states) {
                                     final hovered =
-                                        states.contains(MaterialState.hovered);
+                                        states.contains(WidgetState.hovered);
                                     return TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
