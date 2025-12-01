@@ -311,6 +311,21 @@ class _ProductPageState extends State<ProductPage> {
                     ),
                   ),
 
+                
+                  OutlinedButton.icon(
+                    onPressed: placeholderCallbackForButtons,
+                    icon: const Icon(Icons.add_shopping_cart, color: Colors.black),
+                    label: const Text(
+                      'Add to Cart',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      side: const BorderSide(color: Colors.black),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    ),
+                  ),
+
                   const SizedBox(height: 24),
 
                   // Product description
