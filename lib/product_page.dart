@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
-class ProductPage extends StatelessWidget {
+const TextStyle normalText = TextStyle(fontSize: 16, color: Colors.black);
+const TextStyle heading2 = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
+
+class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
+
+  @override
+  State<ProductPage> createState() => _ProductPageState();
+}
+
+class _ProductPageState extends State<ProductPage> {
+  int _quantity = 1;
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
@@ -271,26 +281,33 @@ class ProductPage extends StatelessWidget {
 
                   const SizedBox(height: 24),
 
-                  const Text(
-                    'Quantity',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  SizedBox(
-                    width: 120,
-                    child: TextFormField(
-                      initialValue: '1',
-                      keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                        border: OutlineInputBorder(),
-                        isDense: true,
-                      ),
+                  
+
+                
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Text(
+                          'Quantity',
+                            style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                            ),
+                          ),
+                        const SizedBox(height: 8),
+                        IconButton(
+                          onPressed: _quantity > 0 ? () => setState(() => _quantity--) : null,
+                          icon: const Icon(Icons.remove),
+                        ),
+                        Text('$_quantity', style: heading2),
+                        IconButton(
+                          onPressed: () => setState(() => _quantity++),
+                          icon: const Icon(Icons.add),
+                        ),
+                      ],
                     ),
                   ),
 
