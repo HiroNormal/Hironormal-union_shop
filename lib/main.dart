@@ -25,11 +25,14 @@ class UnionShopApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/product': (context) => const ProductPage(),
+        '/sigtshirt': (context) => const SigTShirtPage(),
+        '/sighoodie': (context) => const SigHoodiePage(),
         '/about': (context) => const AboutPage(),
         '/upsu': (context) => const UpsuPage(),
         '/shop': (context) => const ShopPage(),
         '/print': (context) => const PrintShackPage(),
         '/sale': (context) => const SalePage(),
+
       },
     );
   }
