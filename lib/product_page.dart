@@ -119,21 +119,24 @@ class _ProductPageState extends State<ProductPage> {
                           // Centered nav buttons (Home, UPSU.net, About, Shop, The Print Shack, SALE!)
                           Expanded(
                             child: Center(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  _navTextButton(context, 'Home', () => navigateToHome(context)),
-                                  const SizedBox(width: 12),
-                                  _navTextButton(context, 'UPSU.net', () => navigateToUpsu(context)),
-                                  const SizedBox(width: 12),
-                                  _navTextButton(context, 'About', () => navigateToAbout(context)),
-                                  const SizedBox(width: 12),
-                                  _navTextButton(context, 'Shop', () => navigateToShop(context)),
-                                  const SizedBox(width: 12),
-                                  _navTextButton(context, 'The Print Shack', () => navigateToPrint(context)),
-                                  const SizedBox(width: 12),
-                                  _navTextButton(context, 'SALE!', () => navigateToSale(context)),
-                                ],
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                padding: const EdgeInsets.symmetric(horizontal: 8),
+                                child: Row(
+                                  children: [
+                                    _navTextButton(context, 'Home', () => navigateToHome(context)),
+                                    const SizedBox(width: 12),
+                                    _navTextButton(context, 'UPSU.net', () => navigateToUpsu(context)),
+                                    const SizedBox(width: 12),
+                                    _navTextButton(context, 'About', () => navigateToAbout(context)),
+                                    const SizedBox(width: 12),
+                                    _navTextButton(context, 'Shop', () => navigateToShop(context)),
+                                    const SizedBox(width: 12),
+                                    _navTextButton(context, 'The Print Shack', () => navigateToPrint(context)),
+                                    const SizedBox(width: 12),
+                                    _navTextButton(context, 'SALE!', () => navigateToSale(context)),
+                                  ],
+                                ),
                               ),
                             ),
                           ),

@@ -9,6 +9,8 @@ void main() {
 
   group('ProductPage widget tests', () {
     testWidgets('basic elements are displayed', (WidgetTester tester) async {
+      // enlarge test surface so header and product content fit; avoids overflow and off-screen taps
+      await tester.binding.setSurfaceSize(const Size(1200, 900));
       await tester.pumpWidget(createTestWidget());
       await tester.pumpAndSettle();
 
@@ -20,6 +22,7 @@ void main() {
     });
 
     testWidgets('quantity controls update displayed quantity', (WidgetTester tester) async {
+      await tester.binding.setSurfaceSize(const Size(1200, 900));
       await tester.pumpWidget(createTestWidget());
       await tester.pumpAndSettle();
 
@@ -46,6 +49,7 @@ void main() {
     });
 
     testWidgets('header icons are present', (WidgetTester tester) async {
+      await tester.binding.setSurfaceSize(const Size(1200, 900));
       await tester.pumpWidget(createTestWidget());
       await tester.pumpAndSettle();
 
@@ -55,6 +59,7 @@ void main() {
     });
 
     testWidgets('add to cart button is tappable and does not crash', (WidgetTester tester) async {
+      await tester.binding.setSurfaceSize(const Size(1200, 900));
       await tester.pumpWidget(createTestWidget());
       await tester.pumpAndSettle();
 
