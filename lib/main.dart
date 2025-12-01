@@ -277,6 +277,7 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(height: 16),
                         const Text(
                           "Over 20% off our essential range. Come and grab yours while stock lasts!",
+                            
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
@@ -335,12 +336,14 @@ class HomeScreen extends StatelessWidget {
                           price: '14.99',
                           imageUrl:
                               'https://shop.upsu.net/cdn/shop/files/Signature_T-Shirt_Indigo_Blue_2_1024x1024@2x.jpg?v=1758290534',
+                          routeName: '/sigtshirt',
                                                   ),
                         ProductCard(
                           title: 'Signature Hoodie',
                           price: '£32.99',
                           imageUrl:
                               'https://shop.upsu.net/cdn/shop/files/SageHoodie_1024x1024@2x.png?v=1745583498',
+                          routeName: '/sighoodie',
                                                   ),
                       ],
                     ),
@@ -377,24 +380,28 @@ class HomeScreen extends StatelessWidget {
                           price: '£10.00',
                           imageUrl:
                               'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                          routeName: '/product',
                         ),
                         ProductCard(
                           title: 'Placeholder Product 2',
                           price: '£15.00',
                           imageUrl:
                               'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                          routeName: '/product',
                         ),
                         ProductCard(
                           title: 'Placeholder Product 3',
                           price: '£20.00',
                           imageUrl:
                               'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                          routeName: '/product',
                         ),
                         ProductCard(
                           title: 'Placeholder Product 4',
                           price: '£25.00',
                           imageUrl:
                               'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                          routeName: '/product',
                         ),
                       ],
                     ),
@@ -430,19 +437,21 @@ class ProductCard extends StatelessWidget {
   final String title;
   final String price;
   final String imageUrl;
+  final String routeName;
   
   const ProductCard({
     super.key,
     required this.title,
     required this.price,
     required this.imageUrl,
+    required this.routeName,
       });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        Navigator.pushNamed(context, routeName);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
