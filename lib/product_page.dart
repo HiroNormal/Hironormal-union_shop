@@ -271,6 +271,31 @@ class ProductPage extends StatelessWidget {
 
                   const SizedBox(height: 24),
 
+                  const Text(
+                    'Quantity',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  SizedBox(
+                    width: 120,
+                    child: TextFormField(
+                      initialValue: '1',
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                        border: OutlineInputBorder(),
+                        isDense: true,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
+
                   // Product description
                   const Text(
                     'Description',
