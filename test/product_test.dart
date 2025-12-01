@@ -3,60 +3,69 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:union_shop/product_page.dart';
 
 void main() {
-  group('Product Page Tests', () {
-    Widget createTestWidget() {
-      return const MaterialApp(home: ProductPage());
-    }
+  Widget createTestWidget() {
+    return const MaterialApp(home: ProductPage());
+  }
 
-    testWidgets('should display product page with basic elements', (
-      tester,
-    ) async {
+  group('ProductPage widget tests', () {
+    testWidgets('basic elements are displayed', (WidgetTester tester) async {
       await tester.pumpWidget(createTestWidget());
-      await tester.pump();
+      await tester.pumpAndSettle();
 
-      // Check that basic UI elements are present
-      expect(
-        find.text('PLACEHOLDER HEADER TEXT - STUDENTS TO UPDATE!'),
-        findsOneWidget,
-      );
+      expect(find.text('PLACEHOLDER HEADER TEXT'), findsOneWidget);
       expect(find.text('Placeholder Product Name'), findsOneWidget);
       expect(find.text('£15.00'), findsOneWidget);
-      expect(find.text('Description'), findsOneWidget);
+      expect(find.textContaining('Celebrate the charm'), findsOneWidget);
+      expect(find.text('Add to Cart'), findsOneWidget);
     });
 
-    testWidgets('should display student instruction text', (tester) async {
+    testWidgets('quantity controls update displayed quantity', (WidgetTester tester) async {
       await tester.pumpWidget(createTestWidget());
-      await tester.pump();
+      await tester.pumpAndSettle();
 
-      // Check that student instruction is present
-      expect(
-        find.text(
-          'Students should add size options, colour options, quantity selector, add to cart button, and buy now button here.',
-        ),
-        findsOneWidget,
-      );
+      // initial quantity
+      expect(find.text('1'), findsOneWidget);
+
+      final Finder addButton = find.byIcon(Icons.add);
+      final Finder removeButton = find.byIcon(Icons.remove);
+
+      // tap add -> 2
+      await tester.tap(addButton);
+      await tester.pumpAndSettle();
+      expect(find.text('2'), findsOneWidget);
+
+      // tap remove -> 1
+      await tester.tap(removeButton);
+      await tester.pumpAndSettle();
+      expect(find.text('1'), findsOneWidget);
+
+      // tap remove -> 0 (allowed by current implementation)
+      await tester.tap(removeButton);
+      await tester.pumpAndSettle();
+      expect(find.text('0'), findsOneWidget);
     });
 
-    testWidgets('should display header icons', (tester) async {
+    testWidgets('header icons are present', (WidgetTester tester) async {
       await tester.pumpWidget(createTestWidget());
-      await tester.pump();
+      await tester.pumpAndSettle();
 
-      // Check that header icons are present
       expect(find.byIcon(Icons.search), findsOneWidget);
       expect(find.byIcon(Icons.shopping_bag_outlined), findsOneWidget);
       expect(find.byIcon(Icons.menu), findsOneWidget);
     });
 
-    testWidgets('should display footer', (tester) async {
+    testWidgets('add to cart button is tappable and does not crash', (WidgetTester tester) async {
       await tester.pumpWidget(createTestWidget());
-      await tester.pump();
+      await tester.pumpAndSettle();
 
-      // Check that footer is present
-      expect(find.text('Placeholder Footer'), findsOneWidget);
-      expect(
-        find.text('Students should customise this footer section'),
-        findsOneWidget,
-      );
+      final Finder addToCart = find.text('Add to Cart');
+      expect(addToCart, findsOneWidget);
+
+      await tester.tap(addToCart);
+      await tester.pumpAndSettle();
+
+      // button should still be present (no navigation / crash)
+      expect(addToCart, findsOneWidget);
     });
   });
 }
