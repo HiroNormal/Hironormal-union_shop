@@ -46,14 +46,14 @@ class _ProductPageState extends State<ProductPage> {
     return TextButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        padding: MaterialStateProperty.all<EdgeInsets>(
+        padding: WidgetStateProperty.all<EdgeInsets>(
           const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
         ),
         foregroundColor:
-            MaterialStateProperty.all<Color>(const Color(0xFF333333)),
-        textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
-            (Set<MaterialState> states) {
-          final hovered = states.contains(MaterialState.hovered);
+            WidgetStateProperty.all<Color>(const Color(0xFF333333)),
+        textStyle: WidgetStateProperty.resolveWith<TextStyle?>(
+            (Set<WidgetState> states) {
+          final hovered = states.contains(WidgetState.hovered);
           return TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
@@ -219,11 +219,11 @@ class _ProductPageState extends State<ProductPage> {
               height: 400,
               width: double.infinity,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
+                borderRadius: const BorderRadius.vertical(bottom: Radius.circular(24)),
                 color: Colors.grey[200],
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
+                borderRadius: const BorderRadius.vertical(bottom: Radius.circular(24)),
                 child: Image.network(
                   'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
                   fit: BoxFit.cover,

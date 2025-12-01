@@ -71,14 +71,14 @@ class HomeScreen extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        padding: MaterialStateProperty.all(
+        padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         ),
         foregroundColor:
-            MaterialStateProperty.all(Colors.grey[800]),
-        textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+            WidgetStateProperty.all(Colors.grey[800]),
+        textStyle: WidgetStateProperty.resolveWith<TextStyle?>(
           (states) {
-            final hovered = states.contains(MaterialState.hovered);
+            final hovered = states.contains(WidgetState.hovered);
             return TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
