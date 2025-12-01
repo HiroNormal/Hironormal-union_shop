@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SigHoodiePage extends StatelessWidget {
-  const SigHoodiePage({super.key});
+class SigTShirtPage extends StatelessWidget {
+  const SigTShirtPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Signature Hoodie')),
-      body: const Center(child: Text('Signature Hoodie page placeholder')),
+      appBar: AppBar(title: const Text('Signature T‑Shirt')),
+      body: const Center(child: Text('Signature T‑Shirt page placeholder')),
     );
   }
 }

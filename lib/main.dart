@@ -5,6 +5,8 @@ import 'package:union_shop/upsu_page.dart';
 import 'package:union_shop/shop_page.dart';
 import 'package:union_shop/print_shack_page.dart';
 import 'package:union_shop/sale_page.dart';
+import 'package:union_shop/sigtshirt_page.dart';
+import 'package:union_shop/sighoodie_page.dart';
   
 void main() {
   runApp(const UnionShopApp());
@@ -53,8 +55,16 @@ class HomeScreen extends StatelessWidget {
     Navigator.pushNamed(context, '/product');
   }
 
+  void navigateToSigTShirt(BuildContext context) {
+    Navigator.pushNamed(context, '/sigtshirt');
+  }
+
+  void navigateToSigHoodie(BuildContext context) {
+    Navigator.pushNamed(context, '/sighoodie');
+  }
+  
   void placeholderCallbackForButtons() {
-    // This is the event handler for buttons that don't work yet
+  
   }
 
   Widget _navTextButton(BuildContext context, String label, VoidCallback onPressed) {
@@ -325,13 +335,13 @@ class HomeScreen extends StatelessWidget {
                           price: '14.99',
                           imageUrl:
                               'https://shop.upsu.net/cdn/shop/files/Signature_T-Shirt_Indigo_Blue_2_1024x1024@2x.jpg?v=1758290534',
-                        ),
+                                                  ),
                         ProductCard(
                           title: 'Signature Hoodie',
                           price: '£32.99',
                           imageUrl:
                               'https://shop.upsu.net/cdn/shop/files/SageHoodie_1024x1024@2x.png?v=1745583498',
-                        ),
+                                                  ),
                       ],
                     ),
                   ],
@@ -420,13 +430,13 @@ class ProductCard extends StatelessWidget {
   final String title;
   final String price;
   final String imageUrl;
-
+  
   const ProductCard({
     super.key,
     required this.title,
     required this.price,
     required this.imageUrl,
-  });
+      });
 
   @override
   Widget build(BuildContext context) {
