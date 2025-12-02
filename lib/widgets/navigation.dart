@@ -32,11 +32,13 @@ class AppNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      color: Colors.white,
-      child: Column(
-        children: [
+    return LayoutBuilder(
+      builder: (context, constraints){
+        return Container(
+          height: 100,
+          color: Colors.white,
+          child: Column(
+            children: [
           // Top banner
           Container(
             width: double.infinity,
@@ -46,6 +48,7 @@ class AppNavigation extends StatelessWidget {
               bannerText,
               textAlign: TextAlign.center,
               style: const TextStyle(color: Colors.white, fontSize: 16),
+              
             ),
           ),
           // Main header (logo, centered nav buttons, action icons)
@@ -133,6 +136,8 @@ class AppNavigation extends StatelessWidget {
           ),
         ],
       ),
+    );
+      }
     );
   }
 }
