@@ -14,33 +14,9 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   int _quantity = 1;
 
-  void navigateToHome(BuildContext context) {
-    Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
-  }
-
   void navigateToAbout(BuildContext context) {
     if (ModalRoute.of(context)?.settings.name == '/about') return;
     Navigator.pushNamed(context, '/about');
-  }
-
-  void navigateToUpsu(BuildContext context) {
-    Navigator.pushNamed(context, '/upsu');
-  }
-
-  void navigateToShop(BuildContext context) {
-    Navigator.pushNamed(context, '/shop');
-  }
-
-  void navigateToPrint(BuildContext context) {
-    Navigator.pushNamed(context, '/print');
-  }
-
-  void navigateToSale(BuildContext context) {
-    Navigator.pushNamed(context, '/sale');
-  }
-
-  void placeholderCallbackForButtons() {
-    // This is the event handler for buttons that don't work yet
   }
 
   @override
