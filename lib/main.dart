@@ -8,6 +8,7 @@ import 'package:union_shop/pages/sale_page.dart';
 import 'package:union_shop/pages/sigtshirt_page.dart';
 import 'package:union_shop/pages/sighoodie_page.dart';
 import 'package:union_shop/widgets/navigation.dart';
+import 'package:union_shop/pages/cart.dart';
   
 void main() {
   runApp(const UnionShopApp());
@@ -27,6 +28,7 @@ class UnionShopApp extends StatelessWidget {
       home: const HomeScreen(),
       initialRoute: '/',
       routes: {
+        '/cart': (context) => const CartPage(),
         '/product': (context) => const ProductPage(),
         '/sigtshirt': (context) => const SigTShirtPage(),
         '/sighoodie': (context) => const SigHoodiePage(),

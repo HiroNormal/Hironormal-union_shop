@@ -49,7 +49,7 @@ class _ProductPageState extends State<ProductPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const AppNavigation(bannerText: 'PLACEHOLDER HEADER TEXT'),
+            const AppNavigation(bannerText: 'BIG SALE! OUR ESSENTIAL RANGE HAS DROPPED IN PRICE! OVER 20% OFF! COME GRAB YOURS WHILE STOCK LASTS'),
 
             // thin separator between header and page content
             const Divider(
@@ -160,18 +160,20 @@ class _ProductPageState extends State<ProductPage> {
 
                 
                   OutlinedButton.icon(
-                    onPressed: placeholderCallbackForButtons,
-                    icon: const Icon(Icons.add_shopping_cart, color: Colors.black),
-                    label: const Text(
-                      'Add to Cart',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      side: const BorderSide(color: Colors.black),
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                    ),
-                  ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/cart');
+                    },
+                     icon: const Icon(Icons.add_shopping_cart, color: Colors.black),
+                     label: const Text(
+                       'Add to Cart',
+                       style: TextStyle(color: Colors.black),
+                     ),
+                     style: OutlinedButton.styleFrom(
+                       backgroundColor: Colors.white,
+                       side: const BorderSide(color: Colors.black),
+                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                     ),
+                   ),
 
                   const SizedBox(height: 24),
 
