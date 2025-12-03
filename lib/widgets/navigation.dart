@@ -34,6 +34,8 @@ class AppNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints){
+        final showFullNav = constraints.maxWidth > 900;
+        
         return Container(
           height: 100,
           color: Colors.white,
@@ -78,26 +80,29 @@ class AppNavigation extends StatelessWidget {
                     ),
                   ),
                   // Centered nav buttons
-                  Expanded(
-                    child: Center(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          _navTextButton(context, 'Home', () => Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false)),
-                          const SizedBox(width: 12),
-                          _navTextButton(context, 'UPSU.net', () => Navigator.pushNamed(context, '/upsu')),
-                          const SizedBox(width: 12),
-                          _navTextButton(context, 'About', () => Navigator.pushNamed(context, '/about')),
-                          const SizedBox(width: 12),
-                          _navTextButton(context, 'Shop', () => Navigator.pushNamed(context, '/shop')),
-                          const SizedBox(width: 12),
-                          _navTextButton(context, 'The Print Shack', () => Navigator.pushNamed(context, '/print')),
-                          const SizedBox(width: 12),
-                          _navTextButton(context, 'SALE!', () => Navigator.pushNamed(context, '/sale')),
-                        ],
+                  if (showFullNav)
+                    Expanded(
+                      child: Center(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            _navTextButton(context, 'Home', () => Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false)),
+                            const SizedBox(width: 12),
+                            _navTextButton(context, 'UPSU.net', () => Navigator.pushNamed(context, '/upsu')),
+                            const SizedBox(width: 12),
+                            _navTextButton(context, 'About', () => Navigator.pushNamed(context, '/about')),
+                            const SizedBox(width: 12),
+                            _navTextButton(context, 'Shop', () => Navigator.pushNamed(context, '/shop')),
+                            const SizedBox(width: 12),
+                            _navTextButton(context, 'The Print Shack', () => Navigator.pushNamed(context, '/print')),
+                            const SizedBox(width: 12),
+                            _navTextButton(context, 'SALE!', () => Navigator.pushNamed(context, '/sale')),
+                          ],
+                        ),
                       ),
-                    ),
-                  ),
+                    )
+                  else
+                    const Spacer(),
                   ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 600),
                     child: Row(
