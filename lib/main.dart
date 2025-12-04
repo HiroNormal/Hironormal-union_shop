@@ -9,6 +9,7 @@ import 'package:union_shop/pages/sigtshirt_page.dart';
 import 'package:union_shop/pages/sighoodie_page.dart';
 import 'package:union_shop/widgets/navigation.dart';
 import 'package:union_shop/pages/cart.dart';
+import 'package:union_shop/models/products.dart';
   
 void main() {
   runApp(const UnionShopApp());
@@ -72,6 +73,17 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // build product lists from the model
+    final signatureProducts = allProducts.where((p) =>
+      p.type == ProductType.signatureTShirt ||
+      p.type == ProductType.signatureHoodie
+    ).toList();
+
+    final portsmouthProducts = allProducts.where((p) =>
+      p.type != ProductType.signatureTShirt &&
+      p.type != ProductType.signatureHoodie
+    ).toList();
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -177,22 +189,13 @@ class HomeScreen extends StatelessWidget {
                           MediaQuery.of(context).size.width > 600 ? 2 : 1,
                       crossAxisSpacing: 24,
                       mainAxisSpacing: 48,
-                      children: const [
-                        ProductCard(
-                          title: 'Signature T‑Shirt',
-                          price: '14.99',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/Signature_T-Shirt_Indigo_Blue_2_1024x1024@2x.jpg?v=1758290534',
-                          routeName: '/sigtshirt',
-                                                  ),
-                        ProductCard(
-                          title: 'Signature Hoodie',
-                          price: '£32.99',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/SageHoodie_1024x1024@2x.png?v=1745583498',
-                          routeName: '/sighoodie',
-                                                  ),
-                      ],
+                      // replaced hardcoded children with mapped data
+                      children: signatureProducts.map((p) => ProductCard(
+                        title: p.name,
+                        price: p.price,
+                        imageUrl: p.image,
+                        routeName: p.routeName,
+                      )).toList(),
                     ),
                   ],
                 ),
@@ -221,36 +224,12 @@ class HomeScreen extends StatelessWidget {
                           MediaQuery.of(context).size.width > 600 ? 2 : 1,
                       crossAxisSpacing: 24,
                       mainAxisSpacing: 48,
-                      children: const [
-                        ProductCard(
-                          title: 'Placeholder Product 1',
-                          price: '£10.00',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-                          routeName: '/product',
-                        ),
-                        ProductCard(
-                          title: 'Placeholder Product 2',
-                          price: '£15.00',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-                          routeName: '/product',
-                        ),
-                        ProductCard(
-                          title: 'Placeholder Product 3',
-                          price: '£20.00',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-                          routeName: '/product',
-                        ),
-                        ProductCard(
-                          title: 'Placeholder Product 4',
-                          price: '£25.00',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-                          routeName: '/product',
-                        ),
-                      ],
+                      children: portsmouthProducts.map((p) => ProductCard(
+                        title: p.name,
+                        price: p.price,
+                        imageUrl: p.image,
+                        routeName: p.routeName,
+                      )).toList(),
                     ),
                   ],
                 ),
