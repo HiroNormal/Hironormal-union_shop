@@ -30,7 +30,6 @@ class UnionShopApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/cart': (context) => const CartPage(),
-        '/product': (context) => const ProductPage(),
         '/sigtshirt': (context) => const SigTShirtPage(),
         '/sighoodie': (context) => const SigHoodiePage(),
         '/about': (context) => const AboutPage(),
@@ -275,9 +274,17 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final maybeProduct = allProducts.firstWhere(
+      (p) => p.image == imageUrl && p.price == price,
+      orElse: () => allProducts.first,
+    );// find the product matching the card details
+
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, routeName);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => ProductPage(product: maybeProduct)),
+        );
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

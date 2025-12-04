@@ -61,3 +61,4 @@ class Cart {
   int getQuantity(Product product) => _items[product] ?? 0;
 
 }
+final Cart cart = Cart();

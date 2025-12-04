@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/widgets/navigation.dart';
+import 'package:union_shop/models/products.dart';
+import 'package:union_shop/models/cart.dart';
 
 const TextStyle normalText = TextStyle(fontSize: 16, color: Colors.black);
 const TextStyle heading2 = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
 
 class ProductPage extends StatefulWidget {
-  const ProductPage({super.key});
+  const ProductPage({super.key, required this.product});
+  final Product product;
 
   @override
   State<ProductPage> createState() => _ProductPageState();
@@ -21,6 +24,8 @@ class _ProductPageState extends State<ProductPage> {
 
   @override
   Widget build(BuildContext context) {
+    final product = widget.product;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -45,7 +50,7 @@ class _ProductPageState extends State<ProductPage> {
               child: ClipRRect(
                 borderRadius: const BorderRadius.vertical(bottom: Radius.circular(24)),
                 child: Image.network(
-                  'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                  product.image,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
@@ -80,10 +85,9 @@ class _ProductPageState extends State<ProductPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Product name
-                  const Text(
-                    'Placeholder Product Name',
-                    style: TextStyle(
+                  Text(
+                    product.name,
+                    style: const TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
@@ -92,10 +96,9 @@ class _ProductPageState extends State<ProductPage> {
 
                   const SizedBox(height: 12),
 
-                  // Product price
-                  const Text(
-                    '£15.00',
-                    style: TextStyle(
+                  Text(
+                    product.price,
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF4d2963),
@@ -137,6 +140,10 @@ class _ProductPageState extends State<ProductPage> {
                 
                   OutlinedButton.icon(
                     onPressed: () {
+                      cart.add(product, quantity: _quantity);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('${product.name} added to cart (x$_quantity)')),
+                      );
                       Navigator.pushNamed(context, '/cart');
                     },
                      icon: const Icon(Icons.add_shopping_cart, color: Colors.black),
