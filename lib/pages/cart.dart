@@ -82,10 +82,6 @@ class _CartPageState extends State<CartPage> {
                           style: TextStyle(fontSize: 16, color: Colors.grey),
                         ),
                         const SizedBox(height: 12),
-                        TextButton(
-                          onPressed: () => navigateToHome(context),
-                          child: const Text('Back to shop'),
-                        ),
                       ] else ...[
                         
                         ListView.builder(
