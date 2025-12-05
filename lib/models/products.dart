@@ -51,9 +51,10 @@ const List<Product> allProducts = [
         'https://shop.upsu.net/cdn/shop/files/Signature_T-Shirt_Indigo_Blue_2_1024x1024@2x.jpg?v=1758290534',
     routeName: '/sigtshirt',
     description:
-        '''Our Signature T-shirts combine everyday comfort with premium detail. 
-        Featuring high-quality embroidery and a relaxed fit, they offer a fresh take on a staple piece. 
-        Lightweight and versatile, this tee is perfect for layering or wearing solo - an essential addition to any wardrobe.''',
+        '''
+Our Signature T-shirts combine everyday comfort with premium detail. 
+Featuring high-quality embroidery and a relaxed fit, they offer a fresh take on a staple piece. 
+Lightweight and versatile, this tee is perfect for layering or wearing solo - an essential addition to any wardrobe.''',
   ),
   Product(
     type: ProductType.signatureHoodie,
@@ -62,9 +63,10 @@ const List<Product> allProducts = [
         'https://shop.upsu.net/cdn/shop/files/SageHoodie_1024x1024@2x.png?v=1745583498',
     routeName: '/sighoodie',
         description:
-            '''Crafted for comfort, elevated with detail — our Signature hoodies feature premium embroidery that sets them apart from our classic range.
-               With a clean design and an oversized fit, they bring a refined edge to a classic silhouette. 
-               Whether you're layering up or keeping it simple, this is your new go-to for effortless style.''',
+            '''
+Crafted for comfort, elevated with detail — our Signature hoodies feature premium embroidery that sets them apart from our classic range.
+With a clean design and an oversized fit, they bring a refined edge to a classic silhouette. 
+Whether you're layering up or keeping it simple, this is your new go-to for effortless style.''',
   ),
   Product(
     type: ProductType.portsmouthMagnet1,
@@ -73,10 +75,11 @@ const List<Product> allProducts = [
         'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
     routeName: '/product',
     description:
-        ''' Bring a bit of Portsmouth pride to your fridge, locker, or pinboard with our eye-catching Portsmouth City Magnet, 
-            featuring the artwork of renowned illustrator Julia Gash.
-            Part of our Portsmouth City Collection, this magnet showcases Julia’s iconic hand-drawn design, celebrating the city’s most loved landmarks and seaside charm in her signature playful style.  
-            Made from durable tin plate, it's both lightweight and long-lasting - a perfect souvenir or small gift with a big personality. ''',
+        '''
+Bring a bit of Portsmouth pride to your fridge, locker, or pinboard with our eye-catching Portsmouth City Magnet, 
+featuring the artwork of renowned illustrator Julia Gash.
+Part of our Portsmouth City Collection, this magnet showcases Julia’s iconic hand-drawn design, celebrating the city’s most loved landmarks and seaside charm in her signature playful style.  
+Made from durable tin plate, it's both lightweight and long-lasting - a perfect souvenir or small gift with a big personality. ''',
   ),
   Product(
     type: ProductType.portsmouthCityPostcard2,
