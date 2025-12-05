@@ -5,8 +5,6 @@ import 'package:union_shop/pages/upsu_page.dart';
 import 'package:union_shop/pages/shop_page.dart';
 import 'package:union_shop/pages/print_shack_page.dart';
 import 'package:union_shop/pages/sale_page.dart';
-import 'package:union_shop/pages/sigtshirt_page.dart';
-import 'package:union_shop/pages/sighoodie_page.dart';
 import 'package:union_shop/widgets/navigation.dart';
 import 'package:union_shop/pages/cart.dart';
 import 'package:union_shop/models/products.dart';
@@ -30,8 +28,6 @@ class UnionShopApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/cart': (context) => const CartPage(),
-        '/sigtshirt': (context) => const SigTShirtPage(),
-        '/sighoodie': (context) => const SigHoodiePage(),
         '/about': (context) => const AboutPage(),
         '/upsu': (context) => const UpsuPage(),
         '/shop': (context) => const ShopPage(),
@@ -58,21 +54,13 @@ class HomeScreen extends StatelessWidget {
     Navigator.pushNamed(context, '/product');
   }
 
-  void navigateToSigTShirt(BuildContext context) {
-    Navigator.pushNamed(context, '/sigtshirt');
-  }
 
-  void navigateToSigHoodie(BuildContext context) {
-    Navigator.pushNamed(context, '/sighoodie');
-  }
-  
   void placeholderCallbackForButtons() {
   
   }
 
   @override
   Widget build(BuildContext context) {
-    // build product lists from the model
     final signatureProducts = allProducts.where((p) =>
       p.type == ProductType.signatureTShirt ||
       p.type == ProductType.signatureHoodie
@@ -145,7 +133,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 32),
                         ElevatedButton(
-                          onPressed: () => navigateToSigTShirt(context),
+                          onPressed: () => Navigator.pushNamed(context, '/shop'),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF4d2963),
                             foregroundColor: Colors.white,

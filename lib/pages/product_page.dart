@@ -32,14 +32,12 @@ class _ProductPageState extends State<ProductPage> {
           children: [
             const AppNavigation(bannerText: 'BIG SALE! OUR ESSENTIAL RANGE HAS DROPPED IN PRICE! OVER 20% OFF! COME GRAB YOURS WHILE STOCK LASTS'),
 
-            // thin separator between header and page content
             const Divider(
               height: 1,
               thickness: 0.5,
               color: Color(0xFFE0E0E0),
             ),
 
-            // Hero Section
             Container(
               height: 400,
               width: double.infinity,
@@ -63,11 +61,6 @@ class _ProductPageState extends State<ProductPage> {
                               Icons.image_not_supported,
                               size: 64,
                               color: Colors.grey,
-                            ),
-                            SizedBox(height: 8),
-                            Text(
-                              'Image unavailable',
-                              style: TextStyle(color: Colors.grey),
                             ),
                           ],
                         ),
