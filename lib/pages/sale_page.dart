@@ -18,7 +18,7 @@ class SalePage extends StatelessWidget {
               thickness: 0.5,
               color: Color(0xFFE0E0E0),
             ),
-            // page content
+            
             Container(
               color: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 24),
@@ -38,8 +38,7 @@ class SalePage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 16),
-                      Text(
-                        'SALE! page placeholder',
+                      Text('''Don't miss out! Get yours before they're all gone! All prices shown are inclusive of the discount 🛒''',
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
