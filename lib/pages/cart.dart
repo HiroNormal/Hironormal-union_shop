@@ -11,8 +11,32 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  bool _isProcessing = false;
+
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+  }
+
+  Future<void> _handleCheckout() async {
+    setState(() => _isProcessing = true);
+
+    // simulate processing delay
+    await Future.delayed(const Duration(seconds: 2));
+
+    final String orderId = 'ORD${DateTime.now().millisecondsSinceEpoch}';
+    final Map<String, dynamic> orderConfirmation = {
+      'orderId': orderId,
+      'totalAmount': cart.totalPrice,
+      'itemCount': cart.countOfItems,
+    };
+
+    if (!mounted) return;
+
+    setState(() => _isProcessing = false);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Order complete — ${orderConfirmation['orderId']}')),
+    );
   }
 
   @override
@@ -163,16 +187,16 @@ class _CartPageState extends State<CartPage> {
                           ],
                         ),
                         const SizedBox(height: 12),
-                        ElevatedButton(
-                          onPressed: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Proceed to checkout (placeholder)'),
-                              ),
-                            );
-                          },
-                          child: const Text('Checkout'),
-                        ),
+                        if (_isProcessing) ...[
+                          const Center(child: CircularProgressIndicator()),
+                          const SizedBox(height: 12),
+                          const Center(child: Text('Processing payment...')),
+                        ] else ...[
+                          ElevatedButton(
+                            onPressed: _handleCheckout,
+                            child: const Text('Checkout'),
+                          ),
+                        ],
                       ],
                     ],
                   ),
