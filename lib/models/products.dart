@@ -46,7 +46,7 @@ class Product {
 const List<Product> allProducts = [
   Product(
     type: ProductType.signatureTShirt,
-    price: '14.99',
+    price: '£14.99',
     imageUrl:
         'https://shop.upsu.net/cdn/shop/files/Signature_T-Shirt_Indigo_Blue_2_1024x1024@2x.jpg?v=1758290534',
     routeName: '/sigtshirt',
