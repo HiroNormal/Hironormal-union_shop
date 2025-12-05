@@ -7,22 +7,26 @@ void main() {
       await tester.pumpWidget(const UnionShopApp());
       await tester.pump();
 
-      // Hero title + call to action
       expect(find.text('Essentiial Range - Over 20% OFF!'), findsOneWidget);
       expect(find.text('BROWSE COLLECTION'), findsOneWidget);
     });
 
     testWidgets('should display product cards', (tester) async {
       await tester.pumpWidget(const UnionShopApp());
-      await tester.pump();
+      await tester.pumpAndSettle();
 
-      // Check that product cards are displayed
-      expect(find.text('Placeholder Product 1'), findsOneWidget);
-      expect(find.text('Placeholder Product 2'), findsOneWidget);
-      expect(find.text('Placeholder Product 3'), findsOneWidget);
-      expect(find.text('Placeholder Product 4'), findsOneWidget);
+      expect(find.text('Signature T‑Shirt'), findsOneWidget);
+      expect(find.text('Signature Hoodie'), findsOneWidget);
 
-      // Check prices are displayed
+      
+      expect(find.textContaining('Portsmouth City Magnet'), findsOneWidget);
+      expect(find.textContaining('Portsmouth City Postcard'), findsOneWidget);
+      expect(find.textContaining('Portsmouth City Bookmark'), findsOneWidget);
+      expect(find.textContaining('Portsmouth City Notebook'), findsOneWidget);
+
+      
+      expect(find.text('£14.99'), findsOneWidget);
+      expect(find.text('£32.99'), findsOneWidget);
       expect(find.text('£10.00'), findsOneWidget);
       expect(find.text('£15.00'), findsOneWidget);
       expect(find.text('£20.00'), findsOneWidget);
