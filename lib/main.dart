@@ -8,6 +8,7 @@ import 'package:union_shop/pages/sale_page.dart';
 import 'package:union_shop/widgets/navigation.dart';
 import 'package:union_shop/pages/cart.dart';
 import 'package:union_shop/models/products.dart';
+import 'package:union_shop/pages/login_page.dart';
   
 void main() {
   runApp(const UnionShopApp());
@@ -28,6 +29,7 @@ class UnionShopApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/cart': (context) => const CartPage(),
+        '/login': (context) => const LoginPage(),
         '/about': (context) => const AboutPage(),
         '/upsu': (context) => const UpsuPage(),
         '/shop': (context) => const ShopPage(),

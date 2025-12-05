@@ -118,7 +118,7 @@ class AppNavigation extends StatelessWidget {
                           icon: const Icon(Icons.person_outline, size: 18, color: Colors.grey),
                           padding: const EdgeInsets.all(8),
                           constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
-                          onPressed: _placeholderCallbackForButtons,
+                          onPressed: () => Navigator.pushNamed(context, '/login'),
                         ),
                         IconButton(
                           icon: const Icon(Icons.shopping_bag_outlined, size: 18, color: Colors.grey),
