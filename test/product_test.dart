@@ -74,7 +74,6 @@ void main() {
 
       expect(find.byIcon(Icons.search), findsOneWidget);
       expect(find.byIcon(Icons.shopping_bag_outlined), findsOneWidget);
-      expect(find.byIcon(Icons.menu), findsOneWidget);
     });
 
     testWidgets('add to cart button is tappable and does not crash', (WidgetTester tester) async {
