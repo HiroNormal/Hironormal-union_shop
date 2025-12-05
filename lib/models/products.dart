@@ -2,9 +2,9 @@ enum ProductType {
   signatureTShirt,
   signatureHoodie,
   portsmouthMagnet1,
-  placeholderProduct2,
-  placeholderProduct3,
-  placeholderProduct4,
+  portsmouthCityPostcard2,
+  portsmouthCityBookmark3,
+  portsmouthCityNotebook4,
 }
 
 class Product {
@@ -28,12 +28,12 @@ class Product {
         return 'Signature Hoodie';
       case ProductType.portsmouthMagnet1:
         return 'Portsmouth City Magnet';
-      case ProductType.placeholderProduct2:
-        return 'Placeholder Product 2';
-      case ProductType.placeholderProduct3:
-        return 'Placeholder Product 3';
-      case ProductType.placeholderProduct4:
-        return 'Placeholder Product 4';
+      case ProductType.portsmouthCityPostcard2:
+        return 'Portsmouth City Postcard';
+      case ProductType.portsmouthCityBookmark3:
+        return 'Portsmouth City Bookmark ';
+      case ProductType.portsmouthCityNotebook4:
+        return 'Portsmouth City Notebook ';
     }
   }
 
@@ -65,24 +65,24 @@ const List<Product> allProducts = [
     routeName: '/product',
   ),
   Product(
-    type: ProductType.placeholderProduct2,
+    type: ProductType.portsmouthCityPostcard2,
     price: '£15.00',
     imageUrl:
-        'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+        'https://shop.upsu.net/cdn/shop/files/PortsmouthCityPostcard2_1024x1024@2x.jpg?v=1752232561',
     routeName: '/product',
   ),
   Product(
-    type: ProductType.placeholderProduct3,
+    type: ProductType.portsmouthCityBookmark3,
     price: '£20.00',
     imageUrl:
-        'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+        'https://shop.upsu.net/cdn/shop/files/PortsmouthCityBookmark1_1024x1024@2x.jpg?v=1752230004',
     routeName: '/product',
   ),
   Product(
-    type: ProductType.placeholderProduct4,
+    type: ProductType.portsmouthCityNotebook4,
     price: '£25.00',
     imageUrl:
-        'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+        'https://shop.upsu.net/cdn/shop/files/PortsmouthCityNotebook_1024x1024@2x.jpg?v=1757419215',
     routeName: '/product',
   ),
 ];

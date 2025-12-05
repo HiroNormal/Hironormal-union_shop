@@ -19,7 +19,7 @@ void main() {
       // enlarge test surface so header and product content fit; avoids overflow and off-screen taps
       await tester.binding.setSurfaceSize(const Size(1200, 900));
 
-      final product = allProducts.firstWhere((p) => p.type == ProductType.placeholderProduct2);
+      final product = allProducts.firstWhere((p) => p.type == ProductType.portsmouthCityPostcard2);
 
       await tester.pumpWidget(createTestWidget(product));
       await tester.pumpAndSettle();
@@ -38,7 +38,7 @@ void main() {
 
     testWidgets('quantity controls update displayed quantity', (WidgetTester tester) async {
       await tester.binding.setSurfaceSize(const Size(1200, 900));
-      final product = allProducts.firstWhere((p) => p.type == ProductType.placeholderProduct2);
+      final product = allProducts.firstWhere((p) => p.type == ProductType.portsmouthCityPostcard2);
 
       await tester.pumpWidget(createTestWidget(product));
       await tester.pumpAndSettle();
@@ -67,7 +67,7 @@ void main() {
 
     testWidgets('header icons are present', (WidgetTester tester) async {
       await tester.binding.setSurfaceSize(const Size(1200, 900));
-      final product = allProducts.firstWhere((p) => p.type == ProductType.placeholderProduct2);
+      final product = allProducts.firstWhere((p) => p.type == ProductType.portsmouthCityPostcard2);
 
       await tester.pumpWidget(createTestWidget(product));
       await tester.pumpAndSettle();
@@ -79,7 +79,7 @@ void main() {
 
     testWidgets('add to cart button is tappable and does not crash', (WidgetTester tester) async {
       await tester.binding.setSurfaceSize(const Size(1200, 900));
-      final product = allProducts.firstWhere((p) => p.type == ProductType.placeholderProduct2);
+      final product = allProducts.firstWhere((p) => p.type == ProductType.portsmouthCityPostcard2);
 
       await tester.pumpWidget(createTestWidget(product));
       await tester.pumpAndSettle();
