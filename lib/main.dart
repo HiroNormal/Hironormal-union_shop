@@ -258,7 +258,7 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   final String title;
   final String price;
   final String imageUrl;
@@ -270,14 +270,21 @@ class ProductCard extends StatelessWidget {
     required this.price,
     required this.imageUrl,
     required this.routeName,
-      });
+  });
+
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  bool _hovering = false;
 
   @override
   Widget build(BuildContext context) {
     final maybeProduct = allProducts.firstWhere(
-      (p) => p.image == imageUrl && p.price == price,
+      (p) => p.image == widget.imageUrl && p.price == widget.price,
       orElse: () => allProducts.first,
-    );// find the product matching the card details
+    );
 
     return GestureDetector(
       onTap: () {
@@ -290,17 +297,25 @@ class ProductCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  color: Colors.grey[300],
-                  child: const Center(
-                    child: Icon(Icons.image_not_supported, color: Colors.grey),
-                  ),
-                );
-              },
+            child: MouseRegion(
+              onEnter: (_) => setState(() => _hovering = true),
+              onExit: (_) => setState(() => _hovering = false),
+              child: AnimatedScale(
+                scale: _hovering ? 1.01 : 1.0,
+                duration: const Duration(milliseconds: 150),
+                child: Image.network(
+                  widget.imageUrl,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: Colors.grey[300],
+                      child: const Center(
+                        child: Icon(Icons.image_not_supported, color: Colors.grey),
+                      ),
+                    );
+                  },
+                ),
+              ),
             ),
           ),
           Column(
@@ -308,13 +323,13 @@ class ProductCard extends StatelessWidget {
             children: [
               const SizedBox(height: 4),
               Text(
-                title,
+                widget.title,
                 style: const TextStyle(fontSize: 14, color: Colors.black),
                 maxLines: 2,
               ),
               const SizedBox(height: 4),
               Text(
-                price,
+                widget.price,
                 style: const TextStyle(fontSize: 13, color: Colors.grey),
               ),
             ],
